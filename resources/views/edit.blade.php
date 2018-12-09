@@ -28,9 +28,12 @@
                 @endif
             </span>
         </div>
-        
-        <label for = "content">내용</label>
-            <div id = "editSection"></div>
+
+        <div class="form-group">
+            <label for="content">내용:</label>
+            <textarea class="form-control" rows="5" id="content" name="contents"
+            required>{{old('content')}}{{$board->content}}</textarea>
+
             <span>
                 @if( $errors->has('content') )
                     {{ $errors->first('content') }}
@@ -62,16 +65,6 @@
     </div>
     @include('dropzone')
 
-    <script>
-        var editor = new tui.Editor({   //에디터 생성
-      	el: document.getElementById('editSection'),   
-      	initialEditType: 'wysiwyg',       
-      	previewStyle: 'tab',
-      	height : 600,
-	         }
-  		);
-  		editor.setValue(`{{$board->content}}`)
-    } 
     </script>
     @endsection
     

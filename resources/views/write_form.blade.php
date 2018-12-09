@@ -7,18 +7,7 @@
 @section('cssNscript')
   <link href="/dist/dropzone.css" rel="stylesheet">
   <script src="/dist/dropzone.js"></script>
-  <script src="/bower_components/jquery/dist/jquery.js"></script>
-  <script src="/bower_components/tui-code-snippet/dist/tui-code-snippet.js"></script>
-  <script src="/bower_components/markdown-it/dist/markdown-it.js"></script>
-  <script src="/bower_components/to-mark/dist/to-mark.js"></script>
-  <script src="/bower_components/codemirror/lib/codemirror.js"></script>
-  <script src="/bower_components/highlightjs/highlight.pack.js"></script>
-  <script src="/bower_components/squire-rte/build/squire-raw.js"></script>
-  <script src="/bower_components/tui-editor/dist/tui-editor-Editor.min.js"></script>
-  <link rel="stylesheet" href="/bower_components/codemirror/lib/codemirror.css">
-  <link rel="stylesheet" href="/bower_components/highlightjs/styles/github.css">
-  <link rel="stylesheet" href="/bower_components/tui-editor/dist/tui-editor.css">
-  <link rel="stylesheet" href="/bower_components/tui-editor/dist/tui-editor-contents.css">
+
 @endsection
 @section('content')
 <div class="container">
@@ -38,7 +27,6 @@
           @endif
       </div>
     </div>
-        <label for = "content">내용</label>
         <div class="form-group">
             <label for="content">내용:</label>
             <textarea class="form-control" rows="5" id="content" name="contents"
@@ -61,27 +49,13 @@
 </div>
 
 <div style="margin:10px 0 50px 0" >
-  <button type="button" class="btn btn-primary offset-md-1" onclick="Clicked()">
+  <button type="button" class="btn btn-primary offset-md-1" onclick="$('#store').submit()">
   글등록
   </button>
   <a class="btn btn-danger offset-md-1" href="{{route('boards.index',['page'=>1])}}">목록보기</a>
 </div>
 @include('dropzone')
 
-<script>
-  function Clicked(){
-    var getEditor = document.createElement("input");
-    getEditor.id = "editorContents";
-    getEditor.name = "contents";
-    getEditor.type = "hidden";
-    getEditor.value = editor.getHtml();
-    var store = document.getElementById("store");
-    store.appendChild(getEditor);
-    return $('#store').submit();
-  } 
-  </script>
+
 
 @endsection
-
-{{--
-    --}}
